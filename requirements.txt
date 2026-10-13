@@ -1,0 +1,38 @@
+# ============================================================================
+# 智扫通 · 扫地机器人智能客服 —— 依赖清单
+# ============================================================================
+# 环境：Python 3.13（开发环境实测 3.13.9）
+# 安装：pip install -r requirements.txt
+#
+# 版本号锁定为开发环境实测通过的版本，保证 clone 后行为一致。
+# ============================================================================
+
+# ===== Agent 编排（LangChain 1.x / LangGraph）=====
+langchain==1.4.0
+langchain-core==1.6.10
+langgraph==1.2.11
+
+# ===== 大模型接入（通义千问，走 DashScope 的 OpenAI 兼容模式）=====
+langchain-openai==1.7.1
+langchain-community==0.4.2
+openai==2.50.0
+dashscope==1.26.4
+
+# ===== RAG / 向量库 =====
+langchain-chroma==1.1.0
+chromadb==1.5.9
+langchain-text-splitters==1.1.2
+pypdf==6.19.0
+
+# ===== 数据层（MySQL / Redis）=====
+PyMySQL==1.2.3
+DBUtils==3.2.0
+redis==8.1.0
+
+# ===== Web 前端 =====
+streamlit==1.64.0
+
+# ===== 通用工具 =====
+requests==2.34.2
+PyYAML==6.0.3
+python-dotenv==1.2.2

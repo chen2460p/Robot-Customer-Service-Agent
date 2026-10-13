@@ -44,6 +44,16 @@ from langchain_openai import ChatOpenAI
 # rag_conf：项目统一的 RAG 配置读取器，里面含 chat_model_name、embedding_model_name 等键
 from utils.config_handler import rag_conf
 
+# 自动加载项目根目录的 .env（若存在），方便把 DASHSCOPE_API_KEY 写在 .env 里而不是每台机器手设环境变量。
+# 放在本模块顶部是有意为之：下方模块级单例在 import 时就会读取 os.environ，必须先加载 .env。
+# 用 try/except 兜底——没装 python-dotenv、或没有 .env 文件时静默跳过，不阻断启动。
+try:
+    from dotenv import load_dotenv
+    from utils.path_tool import get_abs_path
+    load_dotenv(get_abs_path(".env"))   # 锚定项目根，与 CWD 无关；文件不存在时静默返回 False
+except ImportError:
+    pass
+
 
 # 抽象工厂基类：定义统一的"造模型"接口，所有具体工厂都要继承它并实现 generator()
 class BaseModelFactory(ABC):

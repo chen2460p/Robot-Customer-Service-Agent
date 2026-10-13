@@ -22,8 +22,11 @@ bench_tmp/
 *.log
 *.tmp
 
-# ===== 敏感配置（含密码，禁止上传） =====
+# ===== 敏感配置（含密码/密钥，禁止上传） =====
 config/db.yml
+.env
+.env.*
+!.env.example
 
 # ===== 系统文件 =====
 .DS_Store
