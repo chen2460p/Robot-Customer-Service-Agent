@@ -1,0 +1,21 @@
+collection_name: agent
+
+# 以下路径均【相对于项目根目录】解析（代码内统一经 get_abs_path 转换），
+# 不再受启动脚本时所在目录（CWD）影响。
+#   - persist_directory: 向量库持久化目录，换目录即换一个独立的库
+#   - data_path:         待入库知识文档所在目录
+persist_directory: chroma_db
+data_path: data
+
+k: 3
+
+# md5_hex_store 是【相对于 persist_directory】的文件名，不是相对项目根。
+# 去重记录必须与向量库同住一个目录，才能保证"换库/清库 = 记录同步归零"，
+# 否则会出现"记录说已入库、新库却是空的"这种无报错的静默故障（详见 vector_store.py 修复②）。
+md5_hex_store: md5.text
+
+allow_knowledge_file_type: ["txt", "pdf"]
+
+chunk_size: 200
+chunk_overlap: 20
+separators: ["\n\n", "\n", ".", "!", "?", "。", "！", "？", " ", ""]

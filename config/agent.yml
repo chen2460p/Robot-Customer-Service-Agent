@@ -1,0 +1,20 @@
+external_data_path: data/external/records.csv
+
+# 多轮对话上下文窗口：最多携带最近 N 条历史消息（user + assistant 合计）
+# 目的：控制 token 消耗。历史无限增长会持续推高成本并最终撑爆上下文，
+# 截断到最近 N 条是成本与效果之间最简单可控的折中。
+max_history_messages: 10
+
+# ===== 天气工具配置 =====
+# 使用 Open-Meteo 公开 API【免密钥】，clone 项目后无需任何注册即可直接运行。
+# 如需换成和风/OpenWeather 等商业 API，只需改这里的 URL 与参数即可，业务代码零改动。
+weather:
+  geocode_url: https://geocoding-api.open-meteo.com/v1/search   # 城市名 -> 经纬度
+  forecast_url: https://api.open-meteo.com/v1/forecast          # 实时天气
+  air_quality_url: https://air-quality-api.open-meteo.com/v1/air-quality  # 空气质量
+  timeout: 8            # 单次请求超时（秒），含连接与读取；避免网络抖动卡死整个 Agent
+  retries: 3            # 最大尝试次数，失败按指数退避 0.5s → 1s → 2s
+  cache_ttl: 600        # 天气结果缓存时长（秒）；天气变化慢，10 分钟内直接复用
+  geo_cache_ttl: 86400  # 城市经纬度缓存时长（秒）；坐标几乎不变，可缓存一天
+  # 真实 API 不可用时返回的降级文案：让模型如实告知用户，而不是编造一份假天气
+  fallback_text: 天气服务暂时不可用，未能获取到实时天气数据，请稍后再试。

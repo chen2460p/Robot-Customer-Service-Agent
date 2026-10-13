@@ -1,0 +1,32 @@
+# ============================================================================
+# MySQL / Redis 连接配置（模板）
+# ============================================================================
+# 使用方法：
+#   1. 复制本文件为 config/db.yml
+#   2. 修改其中的密码等参数为本机实际值
+#   3. db.yml 已被 .gitignore 排除，不会被上传
+# 修改后重启应用即生效，无需改代码。
+
+# ===== MySQL 配置 =====
+mysql:
+  host: 127.0.0.1
+  port: 3306
+  user: root
+  password: "你的MySQL密码"   # 改成本机 MySQL root 密码
+  database: robot_customer_service
+  charset: utf8mb4
+  # 连接池大小：本项目为教学演示，5 个连接足够
+  pool_size: 5
+  # 自动提交：避免长连接后报错
+  autocommit: true
+
+# ===== Redis 配置 =====
+redis:
+  host: 127.0.0.1
+  port: 6379
+  password: ""                # 本机 Redis 默认无密码；有密码则填入
+  db: 0                       # 使用 0 号库
+  # 连接池大小
+  max_connections: 10
+  # 默认 TTL（秒），各调用方可按需覆盖
+  default_ttl: 600
