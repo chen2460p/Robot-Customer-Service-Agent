@@ -156,8 +156,8 @@ if __name__ == '__main__':
     # 多轮对话验证：第二轮的追问依赖第一轮的历史，若无历史传入模型必然答不出
     print("\n", "=" * 30, "② 多轮对话（验证上下文传递）", "=" * 30)
     history = [
-        {"role": "user", "content": "我叫蒲小明，请记住我的名字。"},
-        {"role": "assistant", "content": "好的，蒲小明！我已经记住你的名字了。"},
+        {"role": "user", "content": "我叫张三，请记住我的名字。"},
+        {"role": "assistant", "content": "好的，张三！我已经记住你的名字了。"},
     ]
     for chunk in agent.execute_stream("我叫什么名字？", history=history):
         print(chunk, end="", flush=True)
