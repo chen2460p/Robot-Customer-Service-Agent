@@ -1,7 +1,7 @@
 """
 ================================================================================
 文件：app.py
-职责：本项目（"扫地机器人智能客服"）的前端入口，基于 Streamlit 实现聊天界面。
+职责：本项目（"智扫通"）的前端入口，基于 Streamlit 实现聊天界面。
 配合：与 agent/react_agent.py 配合——本文件只负责"界面 + 流式展示"，
       真正的 Agent 推理、工具调用、提示词切换都在 ReactAgent 内部完成。
 设计要点：
@@ -19,7 +19,7 @@ from agent.react_agent import ReactAgent  # 导入本项目自己实现的 ReAct
 
 # 页面顶部大标题 + 分割线，纯 UI 装饰
 # 标题
-st.title("智扫通机器人智能客服")
+st.title("智扫通 · 扫地机器人智能客服")
 st.divider()
 
 # st.session_state 是 Streamlit 提供的"会话级字典"

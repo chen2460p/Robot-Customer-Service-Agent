@@ -1,4 +1,4 @@
-# 扫地机器人智能客服（Robot Customer Service Agent）
+# 智扫通 · 扫地机器人智能客服（Robot Customer Service Agent）
 
 一个用 Python 实现的**教学型扫地机器人客服 Agent**，在网页里用自然语言咨询选购、故障、保养问题，也能一句话生成个人使用报告。
 
